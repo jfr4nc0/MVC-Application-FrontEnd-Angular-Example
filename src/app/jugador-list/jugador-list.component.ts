@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { UserService } from '../service/user.service';
+import { Jugador } from '../model/jugador';
+import { JugadorService } from '../service/jugador.service';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: 'app-jugador-list',
+  templateUrl: './jugador-list.component.html',
+  styleUrls: ['./jugador-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class JugadorListComponent implements OnInit {
 
-	users: User[] = [];
+	jugadors: Jugador[] = [];
 	
- 	constructor(private userService: UserService) { }
+ 	constructor(private jugadorService: JugadorService) { }
 
   	ngOnInit(){
-  		this.userService.findAll().subscribe(data => {
-  			this.users = data;
+  		this.jugadorService.findAll().subscribe(data => {
+  			this.jugadors = data;
   		});
   	}
 }

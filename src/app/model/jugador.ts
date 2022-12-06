@@ -1,4 +1,4 @@
-export class User {
+export class Jugador {
 	id!: string;
 	nombre!: string;
 	apellido!: string;

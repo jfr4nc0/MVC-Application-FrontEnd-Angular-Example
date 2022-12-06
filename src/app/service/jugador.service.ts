@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../model/user';
+import { Jugador } from '../model/jugador';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class JugadorService {
 
-	private usersUrl: string;
+	private jugadorsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
+    this.jugadorsUrl = 'http://localhost:8080/jugadors';
   }
 
-  public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+  public findAll(): Observable<Jugador[]> {
+    return this.http.get<Jugador[]>(this.jugadorsUrl);
   }
 
-  public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+  public save(jugador: Jugador) {
+    return this.http.post<Jugador>(this.jugadorsUrl, jugador);
   }
 }

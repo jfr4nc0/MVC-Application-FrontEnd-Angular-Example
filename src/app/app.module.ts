@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import { JugadorListComponent } from './jugador-list/jugador-list.component';
+import { JugadorFormComponent } from './jugador-form/jugador-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './service/user.service';
+import { JugadorService } from './service/jugador.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
-    UserFormComponent
+    JugadorListComponent,
+    JugadorFormComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +21,7 @@ import { UserService } from './service/user.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [JugadorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

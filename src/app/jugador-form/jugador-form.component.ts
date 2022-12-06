@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../model/user';
-import { UserService } from '../service/user.service';
+import { Jugador } from '../model/jugador';
+import { JugadorService } from '../service/jugador.service';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-jugador-form',
+  templateUrl: './jugador-form.component.html',
+  styleUrls: ['./jugador-form.component.css']
 })
-export class UserFormComponent {
+export class JugadorFormComponent {
 
-	user: User;
+	jugador: Jugador;
 	
   constructor(
   	private route: ActivatedRoute,
   		private router: Router,
-  			private userService: UserService) {
-  				this.user = new User();
+  			private jugadorService: JugadorService) {
+  				this.jugador = new Jugador();
   				}
 
 	onSubmit(){
-		this.userService.save(this.user).subscribe(result => this.gotoUserList());
+		this.jugadorService.save(this.jugador).subscribe(result => this.gotoJugadorList());
 		}
 		
-	gotoUserList() {
-		this.router.navigate(['/users']);
+	gotoJugadorList() {
+		this.router.navigate(['/jugadors']);
 		}
 }
