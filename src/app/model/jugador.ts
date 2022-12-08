@@ -4,5 +4,7 @@ export class Jugador {
 	apellido!: string;
 	edad!: string;
 	equipo!: string;
-	posicion!: string[];
+	posicion!: string;
+	camiseta!: string;
+	estado!: string;
 }

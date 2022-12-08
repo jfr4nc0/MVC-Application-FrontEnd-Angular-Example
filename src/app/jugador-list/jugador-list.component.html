@@ -9,16 +9,20 @@
           <th scope="col">Edad</th>
           <th scope="col">Equipo</th>
           <th scope="col">Posicion</th>
+          <th scope="col">Camiseta</th>
+          <th scope="col">Estado</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let jugador of jugadors">
+        <tr *ngFor="let jugador of jugadores">
           <td>{{ jugador.id }}</td>
           <td>{{ jugador.nombre }}</td>
           <td>{{ jugador.apellido }}</td>
           <td>{{ jugador.edad }}</td>
           <td>{{ jugador.equipo }}</td>
           <td>{{ jugador.posicion }}</td>
+          <td>{{ jugador.camiseta }}</td>
+          <td>{{ jugador.estado }}</td>
         </tr>
       </tbody>
     </table>

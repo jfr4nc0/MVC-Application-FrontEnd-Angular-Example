@@ -9,13 +9,13 @@ import { JugadorService } from '../service/jugador.service';
 })
 export class JugadorListComponent implements OnInit {
 
-	jugadors: Jugador[] = [];
+	jugadores!: Jugador[];
 	
  	constructor(private jugadorService: JugadorService) { }
 
   	ngOnInit(){
-  		this.jugadorService.findAll().subscribe(data => {
-  			this.jugadors = data;
+  		this.jugadorService.getJugadorList().subscribe(data => {
+  			this.jugadores = data;
   		});
   	}
 }

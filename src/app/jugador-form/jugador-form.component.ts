@@ -20,10 +20,10 @@ export class JugadorFormComponent {
   				}
 
 	onSubmit(){
-		this.jugadorService.save(this.jugador).subscribe(result => this.gotoJugadorList());
+		this.jugadorService.addJugador(this.jugador).subscribe(result => this.gotoJugadorList());
 		}
 		
 	gotoJugadorList() {
-		this.router.navigate(['/jugadors']);
+		this.router.navigate(['/jugadores']);
 		}
 }
