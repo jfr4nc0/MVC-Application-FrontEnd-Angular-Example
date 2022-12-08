@@ -11,9 +11,9 @@ export class JugadorService {
 	
 	constructor(private http: HttpClient) {}
 	
-	public findAll(): Observable<Jugador[]> {
-		return this.http.get<Jugador[]>(this.jugadoresUrl);
-	}
+	//public findAll(): Observable<Jugador[]> {
+	//	return this.http.get<Jugador[]>(this.jugadoresUrl);
+	//}
 	
 	public getJugadorList(): Observable<Jugador[]> {
 		return this.http.get<Jugador[]>(this.jugadoresUrl);

@@ -13,9 +13,21 @@ export class JugadorListComponent implements OnInit {
 	
  	constructor(private jugadorService: JugadorService) { }
 
-  	ngOnInit(){
+  	ngOnInit(): void{
+  		this.getJugadores();
+  	}
+  	
+  	private getJugadores(){
   		this.jugadorService.getJugadorList().subscribe(data => {
   			this.jugadores = data;
   		});
+	}
+  	
+  	deleteJugador(id: number){
+  		this.jugadorService.deleteJugador(id).subscribe(data => {
+  			console.log(data);
+  			this.ngOnInit();
+  			
+		})
   	}
 }

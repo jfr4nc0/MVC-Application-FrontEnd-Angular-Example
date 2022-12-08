@@ -2,49 +2,63 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #jugadorForm="ngForm">
       <div class="form-group">
-        <label for="name">Nombre</label>
+        <label for="nombre">Nombre</label>
         <input type="text" [(ngModel)]="jugador.nombre" 
           class="form-control" 
-          id="name" 
-          name="name" 
+          id="nombre" 
+          name="nombre" 
           placeholder="Ingrese el Nombre"
-          required #name="ngModel">
+          required #nombre="ngModel">
       </div>
       <div class="form-group">
-        <label for="email">Apellido</label>
+        <label for="apellido">Apellido</label>
         <input type="text" [(ngModel)]="jugador.apellido" 
           class="form-control" 
           id="apellido" 
           name="apellido" 
           placeholder="Ingrese el Apellido"
-          required #email="ngModel">
+          required #apellido="ngModel">
       </div>
       <div class="form-group">
-        <label for="email">Edad</label>
+        <label for="edad">Edad</label>
         <input type="text" [(ngModel)]="jugador.edad" 
           class="form-control" 
           id="edad" 
           name="edad" 
           placeholder="Ingrese la Edad"
-          required #email="ngModel">
+          required #edad="ngModel">
       </div>
       <div class="form-group">
-        <label for="email">Equipo</label>
+        <label for="equipo">Equipo</label>
         <input type="text" [(ngModel)]="jugador.equipo" 
           class="form-control" 
           id="equipo" 
           name="equipo" 
           placeholder="Ingrese el Equipo"
-          required #email="ngModel">
+          required #equipo="ngModel">
       </div>
+      <!-- TODO Crear selector de posicion, consultado a la base -->
       <div class="form-group">
-        <label for="email">Posicion</label>
-        <input type="text" [(ngModel)]="jugador.posicion" 
-          class="form-control" 
+        <label for="posicion">Posicion</label>
+        <select [(ngModel)]="jugador.posicion"
+          class="form-select" 
           id="posicion" 
           name="posicion" 
-          placeholder="Ingrese la Posicion"
-          required #email="ngModel">
+          required #posicion="ngModel">
+          <option value="Arquero">Arquero</option>
+          <option value="Defensor">Defensor</option>
+          <option value="Volante">Volante</option>
+          <option value="Delantero">Delantero</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="camiseta">Camiseta</label>
+        <input type="text" [(ngModel)]="jugador.camiseta" 
+          class="form-control" 
+          id="camiseta" 
+          name="camiseta" 
+          placeholder="Ingrese la Camiseta"
+          required #camiseta="ngModel">
       </div>
       <button type="submit" [disabled]="!jugadorForm.form.valid" 
         class="btn btn-info">Submit</button>

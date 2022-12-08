@@ -1,10 +1,9 @@
 export class Jugador {
-	id!: string;
+	id!: number;
 	nombre!: string;
 	apellido!: string;
 	edad!: string;
 	equipo!: string;
 	posicion!: string;
 	camiseta!: string;
-	estado!: string;
 }
