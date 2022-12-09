@@ -1,5 +1,5 @@
 <div class="card my-5">
-  <div class="card-body">
+  <div class="card-body" style="width:50%">
     <form (ngSubmit)="onSubmit()" #jugadorForm="ngForm">
       <div class="form-group">
         <label for="nombre">Nombre</label>
@@ -10,6 +10,7 @@
           placeholder="Ingrese el Nombre"
           required #nombre="ngModel">
       </div>
+      <div [hidden]="!nombre.pristine" class="alert alert-danger">Nombre Requerido</div>
       <div class="form-group">
         <label for="apellido">Apellido</label>
         <input type="text" [(ngModel)]="jugador.apellido" 
@@ -19,15 +20,19 @@
           placeholder="Ingrese el Apellido"
           required #apellido="ngModel">
       </div>
+      <div [hidden]="!apellido.pristine" class="alert alert-danger">Apellido Requerido</div>
       <div class="form-group">
         <label for="edad">Edad</label>
-        <input type="text" [(ngModel)]="jugador.edad" 
+        <input type="number" [(ngModel)]="jugador.edad" 
           class="form-control" 
           id="edad" 
           name="edad" 
-          placeholder="Ingrese la Edad"
+          min="18"
+          max="45"
+          placeholder="Ingrese la Edad (entre 18 a 45 años)"
           required #edad="ngModel">
       </div>
+      <div [hidden]="!edad.pristine" class="alert alert-danger">Edad Requerida</div>
       <div class="form-group">
         <label for="equipo">Equipo</label>
         <input type="text" [(ngModel)]="jugador.equipo" 
@@ -37,11 +42,19 @@
           placeholder="Ingrese el Equipo"
           required #equipo="ngModel">
       </div>
-      <!-- TODO Crear selector de posicion, consultado a la base -->
+      <div [hidden]="!equipo.pristine" class="alert alert-danger">Equipo Requerido</div>
       <div class="form-group">
         <label for="posicion">Posicion</label>
-        <select [(ngModel)]="jugador.posicion"
-          class="form-select" 
+        <ng-multiselect-dropdown
+        	[(ngModel)]="jugador.posicion"
+        	[settings]="configPosiciones"
+        	[data]="listaPosiciones"
+        	id="posicion" 
+          	name="posicion" 
+          	required #posicion="ngModel">
+	    </ng-multiselect-dropdown>
+        <!--<select [(ngModel)]="jugador.posicion"
+          class="form-select"  
           id="posicion" 
           name="posicion" 
           required #posicion="ngModel">
@@ -49,17 +62,21 @@
           <option value="Defensor">Defensor</option>
           <option value="Volante">Volante</option>
           <option value="Delantero">Delantero</option>
-        </select>
+        </select>-->
       </div>
+      <div [hidden]="!posicion.pristine" class="alert alert-danger">Posicion Requerida</div>
       <div class="form-group">
         <label for="camiseta">Camiseta</label>
-        <input type="text" [(ngModel)]="jugador.camiseta" 
+        <input type="number" [(ngModel)]="jugador.camiseta" 
           class="form-control" 
           id="camiseta" 
           name="camiseta" 
-          placeholder="Ingrese la Camiseta"
+          mix="1"
+          max="23"
+          placeholder="Ingrese el nro de Camiseta (entre 1 a 23)"
           required #camiseta="ngModel">
       </div>
+      <div [hidden]="!camiseta.pristine" class="alert alert-danger">Camiseta Requerida</div>
       <button type="submit" [disabled]="!jugadorForm.form.valid" 
         class="btn btn-info">Submit</button>
     </form>

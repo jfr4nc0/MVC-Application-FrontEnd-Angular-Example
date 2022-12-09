@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Jugador } from '../model/jugador';
-import { JugadorService } from '../service/jugador.service';
+import { Jugador } from 'src/app/model/jugador';
+import { JugadorService } from 'src/app/service/jugador.service';
 
 @Component({
   selector: 'app-jugador-list',
@@ -30,4 +30,10 @@ export class JugadorListComponent implements OnInit {
   			
 		})
   	}
+  	
+  	updateJugador(id: number, jugador: Jugador){
+  		this.jugadorService.updateJugador(id,jugador).subscribe(data => {
+  			this.jugadores =data;
+  			});
+  		}
 }

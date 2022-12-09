@@ -1,0 +1,41 @@
+<div class="card my-5">
+  <div class="card-body">
+	<!-- Boton de Estado -->
+	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+	  <label class="btn btn-secondary active">
+	    <input type="radio" name="estados" id="en-proceso" autocomplete="off" checked> En Proceso
+	  </label>
+	  <label class="btn btn-secondary">
+	    <input type="radio" name="estados" id="definitiva" autocomplete="off"> Definitiva
+	  </label>
+	</div>
+	<!-- End -->
+	    <table class="table table-bordered table-striped">
+	      <thead class="thead-dark">
+	        <tr>
+	          <th scope="col">Nombre</th>
+	          <th scope="col">Apellido</th>
+	          <th scope="col">Edad</th>
+	          <th scope="col">Equipo</th>
+	          <th scope="col">Posicion</th>
+	          <th scope="col">Camiseta</th>
+	          <th scope="col">OPC</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr *ngFor="let jugador of jugadores">
+	          <td>{{ jugador.nombre }}</td>
+	          <td>{{ jugador.apellido }}</td>
+	          <td>{{ jugador.edad }}</td>
+	          <td>{{ jugador.equipo }}</td>
+	          <td>{{ jugador.posicion }}</td>
+	          <td>{{ jugador.camiseta }}</td>
+	          <td>
+	          	<button (click)="updateJugador(jugador.id,jugador)" type="button" class="btn btn-primary">Update</button>
+	          	<button (click)="deleteJugador(jugador.id)" type="button" class="btn btn-danger">Borrar</button>
+	          </td>
+	        </tr>
+	      </tbody>
+	    </table>
+  </div>
+</div>
