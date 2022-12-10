@@ -24,5 +24,4 @@ export class JugadorService {
 		
 	public deleteJugador(id: number){
 		return this.http.delete(this.jugadoresUrl+'/'+id)}; 
-  
 }
