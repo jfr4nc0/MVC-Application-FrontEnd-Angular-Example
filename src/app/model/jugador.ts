@@ -6,4 +6,5 @@ export class Jugador {
 	equipo!: string;
 	posicion!: string;
 	camiseta!: string;
+form: any;
 }

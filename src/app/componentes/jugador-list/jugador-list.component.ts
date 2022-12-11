@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Jugador } from 'src/app/model/jugador';
 import { JugadorService } from 'src/app/service/jugador.service';
 import Swal from 'sweetalert2';
@@ -13,7 +14,8 @@ export class JugadorListComponent implements OnInit {
 	jugadores!: Jugador[];
 	jugadoresLength!: number;
 	
- 	constructor(private jugadorService: JugadorService) { }
+ 	constructor(private jugadorService: JugadorService,
+ 	private router: Router) { }
 
   	ngOnInit(): void{
   		this.getJugadores();
@@ -34,10 +36,8 @@ export class JugadorListComponent implements OnInit {
   			.then((value) => location.reload());
   	}
   	
-  	updateJugador(id: number, jugador: Jugador){
-  		this.jugadorService.updateJugador(id,jugador).subscribe(data => {
-  			this.jugadores =data;
-  			});
+  	updateJugador(id: number){
+  		this.router.navigate(["jugador-update", id]);
   		}
   		
 	i!: number;
@@ -82,7 +82,7 @@ export class JugadorListComponent implements OnInit {
   			}
   		// Control numeros de camisetas
   		if(this.camisetaDuplicada()){
-  			Swal.fire("Los numeros de camiseta no se pueden repetir")
+  			Swal.fire("Los numeros de camiseta no se pueden repetir (1 al 23)")
   			.then(() => location.reload());
   			}
 		}

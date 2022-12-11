@@ -1,1 +1,114 @@
-<p>jugador-detalle works!</p>
+<div *ngIf="viewMode; else editable">
+	<div *ngIf="jugadorSeleccionado.id">
+		<h4>Jugador</h4>
+		<div>
+			<label><strong>{{jugadorSeleccionado.nombre}} {{jugadorSeleccionado.apellido}}</strong></label>
+		</div>
+		<div>
+			<label><strong>Edad: </strong></label> {{jugadorSeleccionado.edad}}
+		</div>
+		<div>
+			<label><strong>Equipo: </strong></label> {{jugadorSeleccionado.equipo}}
+		</div>
+		<div>
+			<label><strong>Posicion: </strong></label> {{jugadorSeleccionado.posicion}}
+		</div>
+		<div>
+			<label><strong>Camiseta: </strong></label> {{jugadorSeleccionado.camiseta}}
+		</div>
+		
+		<a class="badge badge-warning"
+		routerLink="/jugadores/{{jugadorSeleccionado.id}}">Editar</a>
+	</div> 
+</div>
+<ng-template #editable>
+	<div *ngIf="jugadorSeleccionado.id" class="edit-form">
+	<div class="card my-5">
+  <div class="card-body" style="width:50%">
+    <form (ngSubmit)="onSubmit()" #jugadorSeleccionadoForm="ngForm">
+		<h4>Tutorial</h4>
+		      <div class="form-group">
+		        <label for="nombre">Nombre</label>
+		        <input type="text" [(ngModel)]="jugadorSeleccionado.nombre" 
+		          class="form-control" 
+		          id="nombre" 
+		          name="nombre" 
+		          placeholder="Ingrese el Nombre"
+		          required #nombre="ngModel">
+		      </div>
+		      <div [hidden]="!nombre.pristine" class="alert alert-danger">Nombre Requerido</div>
+		      <div class="form-group">
+		        <label for="apellido">Apellido</label>
+		        <input type="text" [(ngModel)]="jugadorSeleccionado.apellido" 
+		          class="form-control" 
+		          id="apellido" 
+		          name="apellido" 
+		          placeholder="Ingrese el Apellido"
+		          required #apellido="ngModel">
+		      </div>
+		      <div [hidden]="!apellido.pristine" class="alert alert-danger">Apellido Requerido</div>
+		      <div class="form-group">
+		        <label for="edad">Edad</label>
+		        <input type="number" [(ngModel)]="jugadorSeleccionado.edad" 
+		          class="form-control" 
+		          id="edad" 
+		          name="edad" 
+		          min="18"
+		          max="45"
+		          placeholder="Ingrese la Edad (entre 18 a 45 años)"
+		          required #edad="ngModel">
+		      </div>
+		      <div [hidden]="!edad.pristine" class="alert alert-danger">Edad Requerida</div>
+		      <div class="form-group">
+		        <label for="equipo">Equipo</label>
+		        <input type="text" [(ngModel)]="jugadorSeleccionado.equipo" 
+		          class="form-control" 
+		          id="equipo" 
+		          name="equipo" 
+		          placeholder="Ingrese el Equipo"
+		          required #equipo="ngModel">
+		      </div>
+		      <div [hidden]="!equipo.pristine" class="alert alert-danger">Equipo Requerido</div>
+		      <div class="form-group">
+		        <label for="posicion">Posicion</label>
+		        <!--<ng-multiselect-dropdown
+		        	[(ngModel)]="selectedPosiciones"
+		        	[settings]="configPosiciones"
+		        	[data]="listaPosiciones"
+		        	id="posicion" 
+		          	name="posicion" 
+		          	required #posicion="ngModel">
+			    </ng-multiselect-dropdown>-->
+		        <select [(ngModel)]="jugadorSeleccionado.posicion"
+		          class="form-select"  
+		          id="posicion" 
+		          name="posicion" 
+		          required #posicion="ngModel">
+		          <option value="Arquero">Arquero</option>
+		          <option value="Defensor">Defensor</option>
+		          <option value="Volante">Volante</option>
+		          <option value="Delantero">Delantero</option>
+		        </select>
+		      </div>
+		      <div [hidden]="!posicion.pristine" class="alert alert-danger">Posicion Requerida</div>
+		      <div class="form-group">
+		        <label for="camiseta">Camiseta</label>
+		        <input type="number" [(ngModel)]="jugadorSeleccionado.camiseta" 
+		          class="form-control" 
+		          id="camiseta" 
+		          name="camiseta" 
+		          mix="1"
+		          max="23"
+		          placeholder="Ingrese el nro de Camiseta (entre 1 a 23)"
+		          required #camiseta="ngModel">
+		      </div>
+		      <div [hidden]="!camiseta.pristine" class="alert alert-danger">Camiseta Requerida</div>
+		      <button type="submit" [disabled]="!jugadorSeleccionado.form.valid" 
+		        class="btn btn-success">Submit</button>
+		    </form>
+  </div></div></div>
+  <div *ngIf="!jugadorSeleccionado.id">
+  	<br />
+  	<p> No se puede acceder a este Jugador...</p>	
+  </div>
+</ng-template>

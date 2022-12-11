@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Jugador } from 'src/app/model/jugador';
 import { JugadorService } from 'src/app/service/jugador.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-jugador-form',
@@ -34,6 +35,7 @@ export class JugadorFormComponent {
 		
 	// Seleccion multiple de posiciones
 	listaPosiciones: any[] =[];
+	selectedPosiciones: any[] =[];
 	configPosiciones:IDropdownSettings={};
 	
 	ngOnInit(){
@@ -48,4 +50,7 @@ export class JugadorFormComponent {
 			textField: "posicion",
 			};
 		}
+	
+	controlPosiciones(selectedPosiciones: any[]){
+        }
 }

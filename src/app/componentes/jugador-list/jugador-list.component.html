@@ -5,7 +5,7 @@
 	  <label class="btn btn-secondary active">
 	    <input type="radio" name="estados" id="en-proceso" autocomplete="off" checked> En Proceso
 	  </label>
-	  <label class="btn btn-secondary">
+	  <label class="btn btn-success">
 	    <input (click)="controlListaDef()" type="radio" name="estados" id="definitiva" autocomplete="off"> Definitiva
 	  </label>
 	</div>
@@ -31,7 +31,7 @@
 	          <td>{{ jugador.posicion }}</td>
 	          <td>{{ jugador.camiseta }}</td>
 	          <td>
-	          	<button (click)="updateJugador(jugador.id,jugador)" type="button" class="btn btn-primary">Update</button>
+	          	<button (click)="updateJugador(jugador.id)" type="button" class="btn btn-primary">Update</button>
 	          	<button (click)="deleteJugador(jugador.id)" type="button" class="btn btn-danger">Borrar</button>
 	          </td>
 	        </tr>

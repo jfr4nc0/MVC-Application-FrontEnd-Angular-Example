@@ -10,13 +10,15 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { JugadorListComponent } from './componentes/jugador-list/jugador-list.component';
 import { JugadorDetalleComponent } from './componentes/jugador-detalle/jugador-detalle.component';
 import { JugadorFormComponent } from './componentes/jugador-form/jugador-form.component';
+import { JugadorUpdateComponent } from './componentes/jugador-update/jugador-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JugadorListComponent,
     JugadorFormComponent,
-    JugadorDetalleComponent
+    JugadorDetalleComponent,
+    JugadorUpdateComponent
   ],
   imports: [
     BrowserModule,
