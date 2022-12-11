@@ -19,8 +19,8 @@ export class JugadorService {
 		return this.http.post<Jugador>(this.jugadoresUrl, jugador);
 		}
 	  
-	public updateJugador(id: number, jugador: Jugador): Observable<any>{
-		return this.http.put(this.jugadoresUrl+'/'+id,jugador);
+	public updateJugador(id: number, jugador: Jugador): Observable<Jugador>{
+		return this.http.put<Jugador>(this.jugadoresUrl+'/'+id,jugador);
 		}
 		
 	public deleteJugador(id: number){

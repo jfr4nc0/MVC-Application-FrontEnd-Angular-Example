@@ -16,26 +16,30 @@ export class JugadorFormComponent {
 	
   constructor(
   	private route: ActivatedRoute,
-  		private router: Router,
-  			private jugadorService: JugadorService) {
-  				this.jugador = new Jugador();
-  				}
+  	private router: Router,
+  	private jugadorService: JugadorService) {
+  		this.jugador = new Jugador();
+  		}
 
 	onSubmit(){
 		this.addJugador();
 		}
 		
 	private addJugador(){
-		this.jugadorService.addJugador(this.jugador).subscribe(result => this.gotoJugadorList());
+		this.controlPosiciones();
+		this.jugadorService.addJugador(this.jugador)
+		.subscribe(() => {
+			Swal.fire("Carga Exitosa!")
+			.then(() => this.goToListaJugadores());
+			}, error => console.log(error));
 		}
 	
-	gotoJugadorList() {
+	goToListaJugadores() {
 		this.router.navigate(['/jugadores']);
 		}
 		
 	// Seleccion multiple de posiciones
 	listaPosiciones: any[] =[];
-	selectedPosiciones: any[] =[];
 	configPosiciones:IDropdownSettings={};
 	
 	ngOnInit(){
@@ -50,7 +54,26 @@ export class JugadorFormComponent {
 			textField: "posicion",
 			};
 		}
+
+	onItemSelect(item: any){
+		console.log('onItemSelect',item);
+	}
 	
-	controlPosiciones(selectedPosiciones: any[]){
+	json: any;
+	selectedPosiciones: any;
+	i: number = 0;
+	posiciones: string[] = [];
+	controlPosiciones(){
+//		this.json = JSON.stringify(this.selectedPosiciones);
+//		console.log("Json string: ",this.json);
+//		console.log("Json parsed: ",this.selectedPosiciones);
+		while(this.i < this.selectedPosiciones.length)
+		{
+			//this.posiciones.concat(this.selectedPosiciones[this.i].posicion+',');
+			this.posiciones.push(this.selectedPosiciones[this.i].posicion)
+			this.i++;
+		}
+		this.jugador.posicion = this.posiciones.join(', ');
+		//console.log(this.jugador.posicion);
         }
 }

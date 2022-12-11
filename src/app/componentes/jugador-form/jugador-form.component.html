@@ -45,15 +45,16 @@
       <div [hidden]="!equipo.pristine" class="alert alert-danger">Equipo Requerido</div>
       <div class="form-group">
         <label for="posicion">Posicion</label>
-        <!--<ng-multiselect-dropdown
+        <ng-multiselect-dropdown
         	[(ngModel)]="selectedPosiciones"
         	[settings]="configPosiciones"
         	[data]="listaPosiciones"
+        	(onSelect)="onItemSelect($event)"
         	id="posicion" 
           	name="posicion" 
           	required #posicion="ngModel">
-	    </ng-multiselect-dropdown>-->
-        <select [(ngModel)]="jugador.posicion"
+	    </ng-multiselect-dropdown>
+        <!-- <select [(ngModel)]="jugador.posicion"
           class="form-select"  
           id="posicion" 
           name="posicion" 
@@ -62,7 +63,7 @@
           <option value="Defensor">Defensor</option>
           <option value="Volante">Volante</option>
           <option value="Delantero">Delantero</option>
-        </select>
+        </select>-->
       </div>
       <div [hidden]="!posicion.pristine" class="alert alert-danger">Posicion Requerida</div>
       <div class="form-group">
