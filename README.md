@@ -1,4 +1,3 @@
-# Challenge de ITR
 # Angular FrontEnd
 ### Autor: Joan Franco Canossa
 ### Email: jfcpersonal99@gmail.com
