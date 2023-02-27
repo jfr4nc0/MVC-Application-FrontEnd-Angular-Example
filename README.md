@@ -1,6 +1,4 @@
 # Angular FrontEnd
-### Autor: Joan Franco Canossa
-### Email: jfcpersonal99@gmail.com
 
 ## Pasos para el BUILD / Server de desarrollo
 1) Clonar el repositorio
